@@ -1,0 +1,104 @@
+[gd_scene load_steps=12 format=3 uid="uid://7tqt0ksnb43h"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_s12ku"]
+[ext_resource type="Texture2D" uid="uid://b57utsk2pgqfc" path="res://player/Sprite/PlayerNormal.png" id="2_8avlw"]
+[ext_resource type="PackedScene" uid="uid://dyefy3wpp7fab" path="res://status.tscn" id="2_c4xlt"]
+[ext_resource type="Script" path="res://player/pickup_area.gd" id="2_thttl"]
+[ext_resource type="Texture2D" uid="uid://d2hshxen1bxta" path="res://player/Sprite/PlayerNormalLeft.png" id="3_101ng"]
+[ext_resource type="PackedScene" uid="uid://d3lcmg6xa8fn4" path="res://gun.tscn" id="3_vwpbv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2o1ir"]
+radius = 10.2435
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_83ew3"]
+radius = 9.84886
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lr3m4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ewfqf"]
+radius = 61.0737
+
+[sub_resource type="Curve2D" id="Curve2D_2u5ss"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -25, -4, 0, 0, 0, 0, -20, -26, 0, 0, 0, 0, 0, -35, 0, 0, 0, 0, 20, -25, 0, 0, 0, 0, 25, -2)
+}
+point_count = 5
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(567, 322)
+collision_layer = 32769
+collision_mask = 32770
+script = ExtResource("1_s12ku")
+
+[node name="Status" parent="." instance=ExtResource("2_c4xlt")]
+visible = false
+
+[node name="Right" type="Sprite2D" parent="."]
+position = Vector2(0.999995, -3.83749)
+scale = Vector2(0.0669445, 0.0540046)
+texture = ExtResource("2_8avlw")
+
+[node name="Left" type="Sprite2D" parent="."]
+position = Vector2(0.999995, -3.83749)
+scale = Vector2(0.0669445, 0.0540046)
+texture = ExtResource("3_101ng")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 32768
+visibility_layer = 32769
+position = Vector2(-1, -1)
+rotation = -0.000463874
+scale = Vector2(1.67818, 2.20639)
+shape = SubResource("CircleShape2D_2o1ir")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(10, 2)
+rotation = -0.00941722
+scale = Vector2(-5426.66, -2630.8)
+zoom = Vector2(1.2, 1.2)
+limit_left = -100
+limit_top = -340
+limit_right = 1300
+limit_bottom = 1000
+limit_smoothed = true
+
+[node name="Gun" parent="." instance=ExtResource("3_vwpbv")]
+position = Vector2(-24, -8)
+scale = Vector2(0.567939, 0.51999)
+collision_mask = 483326
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gun"]
+shape = SubResource("CircleShape2D_83ew3")
+
+[node name="HurtBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-1, 18)
+rotation = -0.000463874
+scale = Vector2(1.85568, 1.07689)
+collision_layer = 32769
+collision_mask = 32774
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+light_mask = 32769
+visibility_layer = 32769
+position = Vector2(0.00449954, -16.7148)
+scale = Vector2(0.832296, 2.30531)
+shape = SubResource("CircleShape2D_lr3m4")
+
+[node name="PickupArea" type="Area2D" parent="."]
+collision_layer = 32768
+collision_mask = 32769
+script = ExtResource("2_thttl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_ewfqf")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_2u5ss")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-25, -4)
+rotation = -1.34732
+
+[connection signal="body_entered" from="PickupArea" to="PickupArea" method="_on_body_entered"]

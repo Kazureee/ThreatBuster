@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://y6q3dyjci1pl"]
+
+[ext_resource type="Script" path="res://eset.gd" id="1_f51v7"]
+[ext_resource type="Texture2D" uid="uid://borkf0sgmbser" path="res://Turret/ESET/ESET.png" id="2_dvbwg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_claqc"]
+radius = 310.015
+
+[node name="ESET" type="Area2D"]
+collision_layer = 0
+collision_mask = 11902
+script = ExtResource("1_f51v7")
+
+[node name="Range" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_claqc")
+
+[node name="WeaponPivot" type="Marker2D" parent="."]
+
+[node name="ESET" type="Sprite2D" parent="WeaponPivot"]
+position = Vector2(1.00001, 1)
+scale = Vector2(0.14, 0.119)
+texture = ExtResource("2_dvbwg")
+
+[node name="ShootingPoint" type="Marker2D" parent="WeaponPivot/ESET"]
+unique_name_in_owner = true
+position = Vector2(-7.62939e-05, 16.8067)
+scale = Vector2(3.58833, 4.02853)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

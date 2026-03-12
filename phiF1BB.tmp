@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgod1q2enqunn"]
+
+[ext_resource type="Script" path="res://control.gd" id="1_44f2w"]
+
+[node name="PhishingEmail" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 222.0
+offset_top = 97.0
+offset_right = 902.0
+offset_bottom = 526.0
+script = ExtResource("1_44f2w")
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = -183.0
+offset_top = -56.0
+offset_right = 885.0
+offset_bottom = 416.0
+
+[node name="AcceptButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 472.0
+offset_right = 250.0
+offset_bottom = 494.0
+
+[node name="DeclineButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 443.0
+offset_top = 471.0
+offset_right = 497.0
+offset_bottom = 492.0
+
+[connection signal="pressed" from="Control/AcceptButton" to="Control" method="_on_accept_button_pressed"]
+[connection signal="pressed" from="Control/DeclineButton" to="Control" method="_on_decline_button_pressed"]

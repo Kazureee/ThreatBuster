@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://7lnfgvu2rxkj"]
+
+[ext_resource type="Script" path="res://character_body_2d.gd" id="1_pj2nr"]
+[ext_resource type="PackedScene" uid="uid://bidc5j5cpi3jh" path="res://bullet.tscn" id="2_8kcyc"]
+[ext_resource type="Texture2D" uid="uid://5i4bdv7jy1xi" path="res://enemy/elite/Ransomware/Ransomware.png" id="3_folbe"]
+[ext_resource type="Script" path="res://enemy/elite/Ransomware/damage_area.gd" id="4_0224v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tphdg"]
+radius = 33.2308
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_df125"]
+radius = 34.0147
+
+[node name="Ransomware" type="CharacterBody2D"]
+position = Vector2(470, 241)
+scale = Vector2(3.57797, 3.02561)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_pj2nr")
+
+[node name="Bullet" parent="." instance=ExtResource("2_8kcyc")]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 5
+visibility_layer = 5
+position = Vector2(-1, -5)
+scale = Vector2(0.0939699, 0.0984485)
+texture = ExtResource("3_folbe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 4
+visibility_layer = 5
+position = Vector2(0, -13)
+scale = Vector2(-0.8125, 0.847912)
+shape = SubResource("CircleShape2D_tphdg")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+script = ExtResource("4_0224v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(1, -5)
+shape = SubResource("CircleShape2D_df125")
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="FloatingLabel" type="Label" parent="."]
+top_level = true
+anchors_preset = -1
+anchor_left = 0.266
+anchor_top = 0.216
+anchor_right = 0.277
+anchor_bottom = 0.216
+offset_left = -175.432
+offset_top = -38.968
+offset_right = -148.104
+offset_bottom = -10.968
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 20

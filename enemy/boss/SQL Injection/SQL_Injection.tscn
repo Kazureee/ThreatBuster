@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1jc8n2dllmh7"]
+
+[ext_resource type="Script" path="res://enemy/boss/SQL Injection/sql_injection.gd" id="1_i1qnu"]
+[ext_resource type="Texture2D" uid="uid://c43s8ldemh2ie" path="res://enemy/boss/SQL Injection/SQL Injection.png" id="1_oodu6"]
+[ext_resource type="PackedScene" uid="uid://b3qe2tbrd2kbp" path="res://enemy/boss/SQL Injection/inject_attack.tscn" id="3_d5w4n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cfl20"]
+radius = 43.0465
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gbsnx"]
+
+[node name="SQL Injection" type="CharacterBody2D"]
+position = Vector2(608, 236)
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("1_i1qnu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -6)
+scale = Vector2(0.161948, 0.15699)
+texture = ExtResource("1_oodu6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, -9)
+shape = SubResource("CircleShape2D_cfl20")
+
+[node name="InjectAttack" parent="." instance=ExtResource("3_d5w4n")]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InjectAttack"]
+shape = SubResource("CircleShape2D_gbsnx")

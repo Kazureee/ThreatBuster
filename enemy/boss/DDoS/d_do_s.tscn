@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bubffw5628eoc"]
+
+[ext_resource type="Script" path="res://enemy/boss/DDoS/d_do_s.gd" id="1_58cq7"]
+[ext_resource type="Texture2D" uid="uid://bp0eq3n0ljnkl" path="res://enemy/boss/DDoS/DDoS.png" id="1_nvvif"]
+[ext_resource type="PackedScene" uid="uid://g165hf7booap" path="res://enemy/boss/DDoS/d_do_s_attack.tscn" id="2_e8d5l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aqteq"]
+radius = 107.117
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kphj4"]
+
+[node name="DDoS" type="CharacterBody2D"]
+position = Vector2(509, 296)
+collision_layer = 256
+collision_mask = 2
+script = ExtResource("1_58cq7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(7.00001, 7)
+scale = Vector2(0.1881, 0.181702)
+texture = ExtResource("1_nvvif")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1, 0.800001)
+shape = SubResource("CircleShape2D_aqteq")
+
+[node name="DDoSAttack" parent="." instance=ExtResource("2_e8d5l")]
+position = Vector2(1, 0)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DDoSAttack"]
+position = Vector2(1, 2)
+shape = SubResource("CircleShape2D_kphj4")

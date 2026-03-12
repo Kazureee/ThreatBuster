@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://ua32yliqcrhy"]
+
+[ext_resource type="Script" path="res://rw_debuff.gd" id="1_esmj6"]
+
+[node name="RWDebuff" type="CanvasLayer"]
+script = ExtResource("1_esmj6")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 332.0
+offset_top = 416.0
+offset_right = 815.0
+offset_bottom = 439.0
+text = "Ransomware has slowed you down! Pay to remove the debuff?"
+
+[node name="PayButton" type="Button" parent="Label"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 29.0
+offset_right = 309.0
+offset_bottom = 53.0
+scale = Vector2(0.843972, 1)
+
+[node name="Label" type="Label" parent="Label/PayButton"]
+layout_mode = 0
+offset_left = 3.0
+offset_right = 123.0
+offset_bottom = 23.0
+scale = Vector2(1.18958, 1)
+text = "Pay 50 Coins"
+
+[node name="ColorRect" type="ColorRect" parent="Label"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -3.0
+offset_top = -1.0
+offset_right = 37.0
+offset_bottom = 39.0
+scale = Vector2(12.2724, 0.763134)
+color = Color(0.18, 0.18, 0.18, 0.789)
+
+[connection signal="pressed" from="Label/PayButton" to="." method="_on_pay_button_pressed"]

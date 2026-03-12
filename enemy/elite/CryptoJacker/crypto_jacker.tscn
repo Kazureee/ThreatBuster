@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://64lsykaw64re"]
+
+[ext_resource type="Script" path="res://enemy/elite/CryptoJacker/crypto_jacker.gd" id="1_axle7"]
+[ext_resource type="Texture2D" uid="uid://docn3my7jdkj7" path="res://enemy/elite/CryptoJacker/CryptoJacker.png" id="1_frws0"]
+[ext_resource type="PackedScene" uid="uid://b483fcevtr8b7" path="res://enemy/elite/CryptoJacker/cryp_attack.tscn" id="3_g28d7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cglk8"]
+radius = 17.0294
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_squnc"]
+radius = 2.23607
+
+[node name="CryptoJacker" type="CharacterBody2D"]
+position = Vector2(557, 305)
+collision_layer = 16
+collision_mask = 18
+script = ExtResource("1_axle7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, -4)
+scale = Vector2(0.112919, 0.103292)
+texture = ExtResource("1_frws0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6, 3)
+shape = SubResource("CircleShape2D_cglk8")
+
+[node name="CrypAttack" parent="." instance=ExtResource("3_g28d7")]
+position = Vector2(3, 4)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CrypAttack"]
+position = Vector2(-8, -11)
+shape = SubResource("CircleShape2D_squnc")
+
+[node name="FloatingLabel" type="Label" parent="."]
+top_level = true
+anchors_preset = -1
+anchor_left = 0.266
+anchor_top = 0.216
+anchor_right = 0.277
+anchor_bottom = 0.216
+offset_left = -175.432
+offset_top = -38.968
+offset_right = -148.104
+offset_bottom = -10.968
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 20

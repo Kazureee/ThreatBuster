@@ -1,0 +1,218 @@
+[gd_scene load_steps=8 format=3 uid="uid://dyefy3wpp7fab"]
+
+[ext_resource type="Script" path="res://canvas_layer.gd" id="1_8vuqg"]
+[ext_resource type="Texture2D" uid="uid://bouppucmmkm3k" path="res://bg.png" id="2_rv20f"]
+[ext_resource type="Texture2D" uid="uid://ofg8otkgxx0j" path="res://fill.png" id="3_0ttno"]
+[ext_resource type="Texture2D" uid="uid://borkf0sgmbser" path="res://Turret/ESET/ESET.png" id="3_yp4fl"]
+[ext_resource type="Texture2D" uid="uid://dbclk166tpgob" path="res://Turret/Cloudflare/Cloudflare.png" id="4_785w8"]
+[ext_resource type="Texture2D" uid="uid://civlqblacynbu" path="res://Turret/Malwarebyte/Malwarebyte.png" id="4_w7vep"]
+[ext_resource type="Texture2D" uid="uid://w1rb4tddil10" path="res://Turret/OWASP/OWASP.png" id="5_4b3d2"]
+
+[node name="Status" type="CanvasLayer"]
+script = ExtResource("1_8vuqg")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 112.0
+offset_right = 152.0
+offset_bottom = 40.0
+scale = Vector2(1.01706, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+visible = false
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+offset_left = 908.501
+offset_top = 117.0
+offset_right = 1018.5
+offset_bottom = 237.0
+scale = Vector2(1, 3.84)
+color = Color(0, 0, 0, 0.378)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 2
+offset_left = 919.316
+offset_top = 115.0
+offset_right = 1029.32
+offset_bottom = 695.0
+scale = Vector2(0.840092, 0.780613)
+
+[node name="Turret1" type="VBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/Turret1"]
+custom_minimum_size = Vector2(30, 80)
+layout_mode = 2
+texture = ExtResource("4_785w8")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/Turret1"]
+layout_mode = 2
+text = "Cloudflare"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Control/VBoxContainer/Turret1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "50 coins"
+
+[node name="Turret2" type="VBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/Turret2"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+texture = ExtResource("3_yp4fl")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/Turret2"]
+layout_mode = 2
+text = "ESET
+"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Control/VBoxContainer/Turret2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "50 coins"
+
+[node name="Turret3" type="VBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/Turret3"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+texture = ExtResource("4_w7vep")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/Turret3"]
+layout_mode = 2
+text = "Malwarebyte
+"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Control/VBoxContainer/Turret3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "50 coins"
+
+[node name="Turret4" type="VBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/Turret4"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+texture = ExtResource("5_4b3d2")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/Turret4"]
+layout_mode = 2
+text = "OWASP
+"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Control/VBoxContainer/Turret4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "50 coins"
+
+[node name="Level" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 80.0
+offset_right = 63.0
+offset_bottom = 103.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = -95.0
+offset_top = 9.0
+offset_right = 301.0
+offset_bottom = 62.0
+scale = Vector2(0.454579, 0.584162)
+
+[node name="HealthBar" type="TextureProgressBar" parent="Control/HBoxContainer"]
+layout_mode = 2
+value = 40.0
+texture_under = ExtResource("2_rv20f")
+texture_progress = ExtResource("3_0ttno")
+
+[node name="Health" type="Label" parent="Control/HBoxContainer/HealthBar"]
+layout_mode = 2
+offset_left = 105.154
+offset_top = 5.88235
+offset_right = 185.154
+offset_bottom = 30.8823
+scale = Vector2(1.50497, 1.5905)
+text = "Health"
+
+[node name="Speed" type="Label" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 65.0
+offset_right = 46.0
+offset_bottom = 88.0
+
+[node name="Exp" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -38.0
+offset_top = 121.0
+offset_right = 2.0
+offset_bottom = 144.0
+
+[node name="TimerLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 386.408
+offset_top = 33.0
+offset_right = 556.408
+offset_bottom = 78.0
+
+[node name="WaveLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 427.703
+offset_top = 15.0
+offset_right = 583.703
+offset_bottom = 53.0
+
+[node name="CoinLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -84.5574
+offset_top = 59.0
+offset_right = -44.5574
+offset_bottom = 82.0
+
+[node name="DebuffPanel" type="Label" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 350.028
+offset_top = 292.0
+offset_right = 833.028
+offset_bottom = 315.0
+text = "Ransomware has slowed you down! Pay to remove the debuff?"
+
+[node name="PayButton" type="Button" parent="Control/DebuffPanel"]
+visible = false
+layout_mode = 0
+offset_left = 124.87
+offset_top = 25.0
+offset_right = 336.869
+offset_bottom = 56.0
+text = "Pay 10% Health"
+
+[node name="Toggle Turrets" type="Button" parent="."]
+offset_left = 1037.0
+offset_top = 81.0
+offset_right = 1142.0
+offset_bottom = 112.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Hide Turrets"
+
+[connection signal="pressed" from="Toggle Turrets" to="." method="_on_toggle_turrets_pressed"]

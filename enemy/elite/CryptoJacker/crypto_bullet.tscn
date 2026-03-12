@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://0ar15ova162v"]
+
+[ext_resource type="Texture2D" uid="uid://bdrtx3i6oisox" path="res://Weapon/projectile.png" id="1_hsnc7"]
+[ext_resource type="Script" path="res://enemy/elite/CryptoJacker/crypto_bullet.gd" id="1_tm1lu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ss41j"]
+size = Vector2(20, 4)
+
+[node name="CryptoBullet" type="Area2D"]
+top_level = true
+position = Vector2(-529, -84)
+script = ExtResource("1_tm1lu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.414151, 0.727491, 0.816558, 1)
+self_modulate = Color(0.866806, 0.000598939, 0.8668, 1)
+position = Vector2(9.53674e-07, 0)
+scale = Vector2(0.479999, 0.214285)
+texture = ExtResource("1_hsnc7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ss41j")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

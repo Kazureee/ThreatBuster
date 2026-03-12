@@ -1,0 +1,103 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgx1e8k2ys63v"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_xxhtj"]
+[ext_resource type="Texture2D" uid="uid://ngec72gsmx82" path="res://Photo/button.png" id="4_53jko"]
+[ext_resource type="VideoStream" path="res://Photo/TB START.ogv" id="5_q8e5a"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xxhtj")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 0
+offset_top = -15.0
+offset_right = 1925.0
+offset_bottom = 1073.0
+scale = Vector2(0.6, 0.62498)
+stream = ExtResource("5_q8e5a")
+autoplay = true
+loop = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.064
+anchor_top = 0.035
+anchor_right = 0.064
+anchor_bottom = 0.18
+offset_left = 413.272
+offset_top = 373.32
+offset_right = 559.27
+offset_bottom = 483.32
+scale = Vector2(1.12, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Player" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 32
+text = "Play"
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Player"]
+show_behind_parent = true
+layout_mode = 0
+offset_top = -2.0
+offset_right = 1369.32
+offset_bottom = 373.0
+scale = Vector2(0.107143, 0.16)
+texture = ExtResource("4_53jko")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Book" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 32
+text = "Book
+"
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Book"]
+show_behind_parent = true
+layout_mode = 0
+offset_top = -2.0
+offset_right = 1369.32
+offset_bottom = 373.0
+scale = Vector2(0.107143, 0.16)
+texture = ExtResource("4_53jko")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 32
+text = "Quit
+"
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Quit"]
+show_behind_parent = true
+layout_mode = 0
+offset_top = -2.0
+offset_right = 1369.32
+offset_bottom = 373.0
+scale = Vector2(0.107143, 0.16)
+texture = ExtResource("4_53jko")
+expand_mode = 3
+stretch_mode = 6
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Player" to="." method="_on_player_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Book" to="." method="_on_book_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

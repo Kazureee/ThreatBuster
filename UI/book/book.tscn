@@ -1,0 +1,97 @@
+[gd_scene load_steps=10 format=3 uid="uid://bn142wjdddgja"]
+
+[ext_resource type="Script" path="res://UI/book/book.gd" id="1_mcxnv"]
+[ext_resource type="Texture2D" uid="uid://c20y37u3625wy" path="res://Photo/book/Adware.png" id="2_j7v88"]
+[ext_resource type="Texture2D" uid="uid://dsjqwpk1cbn53" path="res://Photo/book/Crypto Jacker.png" id="3_76q8y"]
+[ext_resource type="Texture2D" uid="uid://dbuuudgavmfky" path="res://Photo/book/Cyberworm.png" id="4_nw1kc"]
+[ext_resource type="Texture2D" uid="uid://b5c6nd5fj7tri" path="res://Photo/book/DDOS.png" id="5_ctfli"]
+[ext_resource type="Texture2D" uid="uid://c8jjl7dq352w0" path="res://Photo/book/Ransomware.png" id="6_kkpue"]
+[ext_resource type="Texture2D" uid="uid://br3q2lk4jjhao" path="res://Photo/book/Spyware.png" id="7_k3y4w"]
+[ext_resource type="Texture2D" uid="uid://d16380siryknf" path="res://Photo/book/SQL Injection.png" id="8_crw6m"]
+[ext_resource type="Texture2D" uid="uid://c6bq07ye3wi42" path="res://Photo/book/Virus.png" id="9_rynpl"]
+
+[node name="Book" type="CanvasLayer"]
+script = ExtResource("1_mcxnv")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GridContainer" type="GridContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.826
+anchor_top = 1.508
+anchor_right = 1.826
+anchor_bottom = 1.508
+offset_left = -71.04
+offset_top = -56.32
+offset_right = 13441.0
+offset_bottom = 8385.68
+scale = Vector2(0.0520446, 0.0765794)
+columns = 4
+
+[node name="TextureButton1" type="TextureButton" parent="Control/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_j7v88")
+stretch_mode = 1
+
+[node name="TextureButton2" type="TextureButton" parent="Control/GridContainer"]
+custom_minimum_size = Vector2(598, 8)
+layout_mode = 2
+texture_normal = ExtResource("3_76q8y")
+stretch_mode = 5
+
+[node name="TextureButton3" type="TextureButton" parent="Control/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_nw1kc")
+
+[node name="TextureButton4" type="TextureButton" parent="Control/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_ctfli")
+
+[node name="TextureButton5" type="TextureButton" parent="Control/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_kkpue")
+
+[node name="TextureButton6" type="TextureButton" parent="Control/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_k3y4w")
+
+[node name="TextureButton7" type="TextureButton" parent="Control/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("8_crw6m")
+
+[node name="TextureButton8" type="TextureButton" parent="Control/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("9_rynpl")
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 683.0
+offset_top = 42.0
+offset_right = 1140.0
+offset_bottom = 655.0
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Back" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 1072.0
+offset_top = 15.0
+offset_right = 1117.0
+offset_bottom = 46.0
+scale = Vector2(1.09587, 1.12)
+text = "Back"
+
+[connection signal="pressed" from="Control/GridContainer/TextureButton1" to="." method="_on_texture_button_1_pressed"]
+[connection signal="pressed" from="Control/GridContainer/TextureButton2" to="." method="_on_texture_button_2_pressed"]
+[connection signal="pressed" from="Control/GridContainer/TextureButton3" to="." method="_on_texture_button_3_pressed"]
+[connection signal="pressed" from="Control/GridContainer/TextureButton4" to="." method="_on_texture_button_4_pressed"]
+[connection signal="pressed" from="Control/GridContainer/TextureButton5" to="." method="_on_texture_button_5_pressed"]
+[connection signal="pressed" from="Control/GridContainer/TextureButton6" to="." method="_on_texture_button_6_pressed"]
+[connection signal="pressed" from="Control/GridContainer/TextureButton7" to="." method="_on_texture_button_7_pressed"]
+[connection signal="pressed" from="Control/GridContainer/TextureButton8" to="." method="_on_texture_button_8_pressed"]
+[connection signal="pressed" from="Control/Back" to="." method="_on_back_pressed"]

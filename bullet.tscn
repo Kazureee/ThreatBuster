@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://bidc5j5cpi3jh"]
+
+[ext_resource type="Texture2D" uid="uid://bdrtx3i6oisox" path="res://Weapon/projectile.png" id="1_moikp"]
+
+[sub_resource type="GDScript" id="GDScript_fgsmx"]
+script/source = "extends Area2D
+
+var Malwarebytes = Global.player_Malwarebytes
+var ESET = Global.player_ESET
+var Cloudflare = Global.player_Cloudflare
+var OWASP = Global.player_OWASP
+
+var travelled_distance = 0
+var attack_name = \"Basic Bullet\"
+var is_Malwarebytes = true 
+var is_ESET = true          
+var is_Cloudflare = true    
+var is_OWASP = true        
+
+
+func get_damage() -> int:
+	return Global.player_base_damage + Malwarebytes + ESET + Cloudflare + OWASP
+
+
+func _physics_process(delta: float) -> void:
+	const SPEED = 1000
+	const RANGE = 1000
+	
+	var direction = Vector2.RIGHT.rotated(rotation)
+	position += direction * SPEED * delta
+	
+	travelled_distance += SPEED * delta
+	if travelled_distance > RANGE:
+		queue_free()
+
+func _on_body_entered(body: Node2D) -> void:
+	queue_free()
+	if body.has_method(\"take_damage\"):
+		var total_attack_name = attack_name + \" Malwarebytes + ESET + Cloudflare + OWASP ModSecurity\"
+		body.take_damage(get_damage(), total_attack_name)
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ov2y"]
+radius = 13.6015
+
+[node name="Bullet" type="Area2D"]
+top_level = true
+position = Vector2(12, 3)
+scale = Vector2(0.399039, 0.272216)
+collision_layer = 2
+collision_mask = 16382
+script = SubResource("GDScript_fgsmx")
+
+[node name="Projectile" type="Sprite2D" parent="."]
+position = Vector2(-1, 1)
+texture = ExtResource("1_moikp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, 1)
+scale = Vector2(0.84, 0.76)
+shape = SubResource("CircleShape2D_0ov2y")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

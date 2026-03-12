@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1vqmsnvvjdg4"]
+
+[ext_resource type="Script" path="res://enemy/boss/DDoS/d_do_s_bullet.gd" id="1_4f7yh"]
+[ext_resource type="Texture2D" uid="uid://bdrtx3i6oisox" path="res://Weapon/projectile.png" id="2_jw0aa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_as5hr"]
+size = Vector2(35.4167, 23.3334)
+
+[node name="DDoSBullet" type="Area2D"]
+top_level = true
+script = ExtResource("1_4f7yh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.414151, 0.727491, 0.816558, 1)
+self_modulate = Color(0.866806, 0.000598939, 0.8668, 1)
+position = Vector2(9.53674e-07, 0)
+scale = Vector2(0.479999, 0.214285)
+texture = ExtResource("2_jw0aa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 0.5)
+scale = Vector2(0.479999, 0.214285)
+shape = SubResource("RectangleShape2D_as5hr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

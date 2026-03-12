@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://b483fcevtr8b7"]
+
+[ext_resource type="Script" path="res://enemy/elite/CryptoJacker/cryp_attack.gd" id="1_pwcl1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eetyc"]
+radius = 310.015
+
+[node name="CrypAttack" type="Area2D"]
+script = ExtResource("1_pwcl1")
+
+[node name="Range" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 1)
+shape = SubResource("CircleShape2D_eetyc")
+
+[node name="WeaponPivot" type="Marker2D" parent="."]
+
+[node name="ShootingPoint" type="Marker2D" parent="WeaponPivot"]
+unique_name_in_owner = true
+position = Vector2(1, 0)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://ca6to7newrtf7"]
+
+[ext_resource type="Script" path="res://enemy/elite/CyberWorm/cyber_worm.gd" id="1_dfpls"]
+[ext_resource type="Texture2D" uid="uid://cq4bxmdyrqhhc" path="res://enemy/elite/CyberWorm/CyberWorm.png" id="2_tdj8p"]
+[ext_resource type="Script" path="res://enemy/elite/CyberWorm/cw_damage_area.gd" id="3_p44u3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1qnk0"]
+size = Vector2(151.5, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwh7m"]
+size = Vector2(169, 129)
+
+[node name="CyberWorm" type="CharacterBody2D"]
+top_level = true
+position = Vector2(283, 143)
+collision_layer = 32
+collision_mask = 34
+script = ExtResource("1_dfpls")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 5)
+shape = SubResource("RectangleShape2D_1qnk0")
+
+[node name="CWDamageArea" type="Area2D" parent="."]
+position = Vector2(66, -3)
+collision_layer = 2
+script = ExtResource("3_p44u3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CWDamageArea"]
+position = Vector2(-73, 10)
+shape = SubResource("RectangleShape2D_nwh7m")
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1.00003)
+scale = Vector2(0.181142, 0.179543)
+texture = ExtResource("2_tdj8p")
+
+[node name="FloatingLabel" type="Label" parent="."]
+top_level = true
+anchors_preset = -1
+anchor_left = 0.266
+anchor_top = 0.216
+anchor_right = 0.277
+anchor_bottom = 0.216
+offset_left = -175.432
+offset_top = -38.968
+offset_right = -148.104
+offset_bottom = -10.968
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 20
+
+[connection signal="body_entered" from="CWDamageArea" to="CWDamageArea" method="_on_body_entered"]
+[connection signal="body_exited" from="CWDamageArea" to="CWDamageArea" method="_on_body_exited"]

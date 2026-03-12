@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://g165hf7booap"]
+
+[ext_resource type="Script" path="res://enemy/boss/DDoS/d_do_s_attack.gd" id="1_mmrr4"]
+[ext_resource type="PackedScene" uid="uid://c1vqmsnvvjdg4" path="res://enemy/boss/DDoS/d_do_s_bullet.tscn" id="2_caeje"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_spe24"]
+radius = 458.214
+
+[node name="DDoSAttack" type="Area2D"]
+script = ExtResource("1_mmrr4")
+
+[node name="Range" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 1)
+shape = SubResource("CircleShape2D_spe24")
+
+[node name="WeaponPivot" type="Marker2D" parent="."]
+
+[node name="ShootingPoint" type="Marker2D" parent="WeaponPivot"]
+unique_name_in_owner = true
+position = Vector2(1, 0)
+
+[node name="DDoSBullet" parent="WeaponPivot/ShootingPoint" instance=ExtResource("2_caeje")]
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bb4ek5v23t3yd"]
+
+[ext_resource type="Texture2D" uid="uid://ch3tyo4gdkhy3" path="res://mobs/virus/slime_body.png" id="1_ligae"]
+
+[node name="SlimeBody" type="Sprite2D"]
+position = Vector2(252.5, 204.5)
+scale = Vector2(0.287037, 0.344445)
+texture = ExtResource("1_ligae")

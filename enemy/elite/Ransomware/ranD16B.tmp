@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://7lnfgvu2rxkj"]
+
+[ext_resource type="Script" path="res://character_body_2d.gd" id="1_pj2nr"]
+[ext_resource type="PackedScene" uid="uid://bidc5j5cpi3jh" path="res://bullet.tscn" id="2_8kcyc"]
+[ext_resource type="Texture2D" uid="uid://c7h2wsyvwj1nd" path="res://enemy/elite/Ransomware/Ransomware Golem.png" id="2_wdmkc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tphdg"]
+radius = 31.0161
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f0n02"]
+radius = 21.3776
+
+[node name="Ransomware" type="CharacterBody2D"]
+position = Vector2(470, 241)
+script = ExtResource("1_pj2nr")
+
+[node name="Bullet" parent="." instance=ExtResource("2_8kcyc")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -5)
+scale = Vector2(0.0939699, 0.0984485)
+texture = ExtResource("2_wdmkc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -11)
+scale = Vector2(-0.8125, 0.847912)
+shape = SubResource("CircleShape2D_tphdg")
+
+[node name="RanHitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RanHitBox"]
+position = Vector2(1, -16)
+shape = SubResource("CircleShape2D_f0n02")
+
+[connection signal="area_entered" from="RanHitBox" to="." method="_on_ran_hit_box_area_entered"]

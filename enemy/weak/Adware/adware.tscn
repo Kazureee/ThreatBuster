@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://bm0mf5cw2jvlq"]
+
+[ext_resource type="Script" path="res://enemy/weak/Adware/adware.gd" id="1_8pa4k"]
+[ext_resource type="Texture2D" uid="uid://bsyvf4alqm28i" path="res://enemy/weak/Adware/Adware.png" id="2_n26hl"]
+[ext_resource type="PackedScene" uid="uid://t023wdx814gi" path="res://enemy/weak/Adware/adware_attack.tscn" id="3_xrgtg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_horem"]
+size = Vector2(28, 22)
+
+[node name="Adware" type="CharacterBody2D"]
+position = Vector2(147, 126)
+collision_layer = 129
+collision_mask = 3
+script = ExtResource("1_8pa4k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.57764e-05, -1)
+scale = Vector2(0.0414267, 0.0407869)
+texture = ExtResource("2_n26hl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -2)
+shape = SubResource("RectangleShape2D_horem")
+
+[node name="AdwareAttack" parent="." instance=ExtResource("3_xrgtg")]
+
+[node name="FloatingLabel" type="Label" parent="."]
+top_level = true
+anchors_preset = -1
+anchor_left = 0.266
+anchor_top = 0.216
+anchor_right = 0.277
+anchor_bottom = 0.216
+offset_left = -175.432
+offset_top = -38.968
+offset_right = -148.104
+offset_bottom = -10.968
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 20

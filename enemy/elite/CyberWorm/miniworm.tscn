@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://if6tcnqfslu1"]
+
+[ext_resource type="Script" path="res://enemy/elite/CyberWorm/miniworm.gd" id="1_637cn"]
+[ext_resource type="Texture2D" uid="uid://cq4bxmdyrqhhc" path="res://enemy/elite/CyberWorm/CyberWorm.png" id="1_r65hh"]
+[ext_resource type="Script" path="res://enemy/elite/CyberWorm/m_damage.gd" id="3_lsek8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fsnx1"]
+size = Vector2(34, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ypkul"]
+size = Vector2(35, 24)
+
+[node name="Miniworm" type="CharacterBody2D"]
+top_level = true
+collision_layer = 512
+collision_mask = 16898
+script = ExtResource("1_637cn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-5.6953, 0.835892)
+scale = Vector2(0.040557, 0.0398773)
+texture = ExtResource("1_r65hh")
+
+[node name="MDamage" type="Area2D" parent="."]
+script = ExtResource("3_lsek8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MDamage"]
+position = Vector2(-7, 2.5)
+shape = SubResource("RectangleShape2D_fsnx1")
+
+[node name="FloatingLabel" type="Label" parent="."]
+top_level = true
+anchors_preset = -1
+anchor_left = 0.266
+anchor_top = 0.216
+anchor_right = 0.277
+anchor_bottom = 0.216
+offset_left = -175.432
+offset_top = -38.968
+offset_right = -148.104
+offset_bottom = -10.968
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7.5, 2)
+shape = SubResource("RectangleShape2D_ypkul")
+
+[connection signal="body_entered" from="MDamage" to="MDamage" method="_on_body_entered"]
+[connection signal="body_exited" from="MDamage" to="MDamage" method="_on_body_exited"]

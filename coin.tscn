@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://br1my5yflmiks"]
+
+[ext_resource type="Texture2D" uid="uid://ch3tyo4gdkhy3" path="res://enemy/weak/virus/slime_body.png" id="1_5qlig"]
+[ext_resource type="Script" path="res://coin.gd" id="1_rxlfg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s5lo0"]
+radius = 4.0
+
+[node name="Coin" type="Area2D"]
+top_level = true
+position = Vector2(60, 39)
+collision_layer = 32769
+collision_mask = 32769
+script = ExtResource("1_rxlfg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 32768
+position = Vector2(-10, 2)
+shape = SubResource("CircleShape2D_s5lo0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visibility_layer = 32769
+position = Vector2(-10, 1)
+scale = Vector2(0.0648149, 0.0777778)
+texture = ExtResource("1_5qlig")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

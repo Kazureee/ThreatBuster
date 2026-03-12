@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://b16ctsvlb6g1"]
+
+[ext_resource type="Script" path="res://spyware.gd" id="1_yhkcn"]
+[ext_resource type="Texture2D" uid="uid://bq116h3wx60jf" path="res://enemy/elite/Spyware/Spyware.png" id="2_sray6"]
+[ext_resource type="Script" path="res://enemy/elite/Spyware/s_damage_area.gd" id="3_low8u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h3s7b"]
+radius = 23.0217
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jytwo"]
+radius = 30.0666
+
+[node name="Spyware" type="CharacterBody2D"]
+position = Vector2(253, 134)
+collision_layer = 8192
+collision_mask = 8194
+script = ExtResource("1_yhkcn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.196078)
+position = Vector2(0.999989, -3.8147e-06)
+scale = Vector2(0.136396, 0.120401)
+texture = ExtResource("2_sray6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_h3s7b")
+
+[node name="SDamageArea" type="Area2D" parent="."]
+position = Vector2(0, 1)
+collision_layer = 2
+script = ExtResource("3_low8u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SDamageArea"]
+shape = SubResource("CircleShape2D_jytwo")
+
+[node name="FloatingLabel" type="Label" parent="."]
+top_level = true
+anchors_preset = -1
+anchor_left = 0.266
+anchor_top = 0.216
+anchor_right = 0.277
+anchor_bottom = 0.216
+offset_left = -175.432
+offset_top = -38.968
+offset_right = -148.104
+offset_bottom = -10.968
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 20
+
+[connection signal="body_entered" from="SDamageArea" to="SDamageArea" method="_on_body_entered"]
+[connection signal="body_exited" from="SDamageArea" to="SDamageArea" method="_on_body_exited"]

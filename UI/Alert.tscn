@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcfmicw0xobbg"]
+
+[ext_resource type="Script" path="res://UI/Alert.gd" id="1_f6y10"]
+
+[node name="Alert" type="CanvasLayer"]
+process_mode = 3
+visible = false
+script = ExtResource("1_f6y10")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_right = 0.129
+anchor_bottom = 0.165
+offset_left = 63.0
+offset_top = 54.0
+offset_right = 936.392
+offset_bottom = 490.08
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 3
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
