@@ -1,7 +1,7 @@
 # ThreatBuster: A Gamified Cybersecurity Learning Experience 🛡️🎮
 
 **Developed by:** DevSync  
-**Status:** 🚧 In Development
+**Status:** 🚧 Presented
 
 ---
 
